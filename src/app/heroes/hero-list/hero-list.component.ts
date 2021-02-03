@@ -14,20 +14,23 @@ import { Hero } from '../hero';
 })
 export class HeroListComponent implements OnInit {
   heroes$: Observable<Hero[]>;
+  // @ts-ignore
   selectedId: number;
 
   constructor(
     private service: HeroService,
     private route: ActivatedRoute
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.heroes$ = this.route.paramMap.pipe(
       switchMap(params => {
         // (+) before `params.get()` turns the string into a number
+        // @ts-ignore
         this.selectedId = +params.get('id');
         return this.service.getHeroes();
       })
     );
+  }
+
+  ngOnInit(): void {
   }
 }

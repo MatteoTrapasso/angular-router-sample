@@ -1,10 +1,10 @@
-import { switchMap } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
-import { HeroService } from '../hero.service';
-import { Hero } from '../hero';
+import {HeroService} from '../hero.service';
+import {Hero} from '../hero';
 
 @Component({
   selector: 'app-hero-detail',
@@ -18,13 +18,17 @@ export class HeroDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private service: HeroService
-  ) {}
+  ) {
+    // @ts-ignore
 
-  ngOnInit(): void {
     this.hero$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
+        // @ts-ignore
         this.service.getHero(params.get('id')))
     );
+  }
+
+  ngOnInit(): void {
   }
 
   gotoHeroes(hero: Hero): void {
@@ -32,6 +36,6 @@ export class HeroDetailComponent implements OnInit {
     // Pass along the hero id if available
     // so that the HeroList component can select that hero.
     // Include a junk 'foo' property for fun.
-    this.router.navigate(['/heroes', { id: heroId, foo: 'foo' }]);
+    this.router.navigate(['/heroes', {id: heroId, foo: 'foo'}]);
   }
 }
