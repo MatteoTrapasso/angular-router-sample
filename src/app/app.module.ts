@@ -1,30 +1,33 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CrisisListComponent } from './crisis-list/crisis-list.component';
 import { HeroesListComponent } from './heroes-list/heroes-list.component';
-import { RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+
+const appRoutes: Routes = [
+  { path: 'crisis-center', component: CrisisListComponent },
+  { path: 'heroes', component: HeroesListComponent },
+  { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CrisisListComponent,
-    HeroesListComponent,
-    PageNotFoundComponent
-  ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {path: 'crisis-list', component: CrisisListComponent},
-      {path: 'heroes-list', component: HeroesListComponent},
-      {path: '', redirectTo: '/heroes-list', pathMatch: 'full'},
-      {path: '**', component: PageNotFoundComponent}
-    ]),
+    FormsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    HeroesListComponent,
+    CrisisListComponent,
+  ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
