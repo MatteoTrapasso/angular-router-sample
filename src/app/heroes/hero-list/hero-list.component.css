@@ -5,6 +5,7 @@
   padding: 0;
   width: 15em;
 }
+
 .heroes li {
   position: relative;
   cursor: pointer;
@@ -29,7 +30,7 @@
 }
 
 .heroes a:hover {
-  color:#607D8B;
+  color: #607D8B;
 }
 
 .heroes .badge {
@@ -74,6 +75,7 @@ button.delete {
   background-color: #CFD8DC;
   color: white;
 }
+
 .heroes li.selected:hover {
   background-color: #BBD8DC;
 }

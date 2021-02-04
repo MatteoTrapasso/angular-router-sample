@@ -1,11 +1,9 @@
-import {switchMap} from 'rxjs/operators';
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 
-import {CrisisService} from '../crisis.service';
 import {Crisis} from '../crisis';
-import {HeroService} from '../../heroes/hero.service';
+import {DialogService} from '../../dialog.service';
 
 @Component({
   selector: 'app-crisis-detail',
@@ -13,31 +11,52 @@ import {HeroService} from '../../heroes/hero.service';
   styleUrls: ['./crisis-detail.component.css']
 })
 export class CrisisDetailComponent implements OnInit {
-  crisis$: Observable<Crisis>;
+  // @ts-ignore
+  crisis: Crisis;
+  // @ts-ignore
+  editName: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: HeroService
+    public dialogService: DialogService
   ) {
-    // @ts-ignore
-
-    this.crisis$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        // @ts-ignore
-        this.service.getCrisis(params.get('id')))
-    );
   }
 
   ngOnInit(): void {
+    this.route.data
+      // @ts-ignore
+      .subscribe((data: { crisis: Crisis }) => {
+        this.editName = data.crisis.name;
+        this.crisis = data.crisis;
+      });
   }
 
-  gotoCrises(crisis: Crisis): void {
-    const crisisId = crisis ? crisis.id : null;
+  cancel(): void {
+    this.gotoCrises();
+  }
+
+  save(): void {
+    this.crisis.name = this.editName;
+    this.gotoCrises();
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+    if (!this.crisis || this.crisis.name === this.editName) {
+      return true;
+    }
+    // Otherwise ask the user with the dialog service and return its
+    // observable which resolves to true or false when the user decides
+    return this.dialogService.confirm('Discard changes?');
+  }
+
+  gotoCrises(): void {
+    const crisisId = this.crisis ? this.crisis.id : null;
     // Pass along the crisis id if available
-    // so that the CrisisList component can select that crisis.
-    // Include a junk 'foo' property for fun.
+    // so that the CrisisListComponent can select that crisis.
+    // Add a totally useless `foo` parameter for kicks.
     // Relative navigation back to the crises
-    this.router.navigate(['../', { id: crisisId, foo: 'foo' }], { relativeTo: this.route });
+    this.router.navigate(['../', {id: crisisId, foo: 'foo'}], {relativeTo: this.route});
   }
 }
