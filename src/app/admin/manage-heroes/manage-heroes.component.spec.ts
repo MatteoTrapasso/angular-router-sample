@@ -8,9 +8,9 @@ describe('ManageHeroesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ManageHeroesComponent]
+      declarations: [ ManageHeroesComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

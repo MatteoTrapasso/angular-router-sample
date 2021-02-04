@@ -29,11 +29,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot): true | UrlTree {
     return this.canActivate(route, state);
   }
-
-  checkLogin(url: string): true | UrlTree {
-    if (this.authService.isLoggedIn) {
-      return true;
-    }
+  checkLogin(url: string): true|UrlTree {
+    if (this.authService.isLoggedIn) { return true; }
 
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;

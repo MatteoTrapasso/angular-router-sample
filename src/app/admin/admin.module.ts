@@ -20,5 +20,4 @@ import {AdminRoutingModule} from './admin-routing.module';
     ManageHeroesComponent
   ]
 })
-export class AdminModule {
-}
+export class AdminModule {}

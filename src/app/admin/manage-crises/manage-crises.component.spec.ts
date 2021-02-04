@@ -8,9 +8,9 @@ describe('ManageCrisesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ManageCrisesComponent]
+      declarations: [ ManageCrisesComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

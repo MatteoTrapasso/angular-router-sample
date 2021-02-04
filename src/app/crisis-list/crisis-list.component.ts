@@ -1,8 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
-import {CrisisService} from '../crisis-center/crisis.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+// @ts-ignore
+import { CrisisService } from '../crisis.service';
+// @ts-ignore
+import { Crisis } from '../crisis';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-crisis-list',
@@ -19,9 +23,6 @@ export class CrisisListComponent implements OnInit {
     private service: CrisisService,
     private route: ActivatedRoute
   ) {
-  }
-
-  ngOnInit(): void {
     // @ts-ignore
     this.crises$ = this.route.paramMap.pipe(
       switchMap(params => {
@@ -30,5 +31,8 @@ export class CrisisListComponent implements OnInit {
         return this.service.getCrises();
       })
     );
+  }
+
+  ngOnInit(): void {
   }
 }

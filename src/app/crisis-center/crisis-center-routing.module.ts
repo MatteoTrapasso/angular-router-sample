@@ -44,5 +44,4 @@ const crisisCenterRoutes: Routes = [
     RouterModule
   ]
 })
-export class CrisisCenterRoutingModule {
-}
+export class CrisisCenterRoutingModule { }

@@ -8,9 +8,9 @@ describe('ComposeMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ComposeMessageComponent]
+      declarations: [ ComposeMessageComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

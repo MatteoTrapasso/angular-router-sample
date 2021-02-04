@@ -7,8 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ManageHeroesComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

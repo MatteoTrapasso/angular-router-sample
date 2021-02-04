@@ -8,9 +8,9 @@ describe('CrisisCenterHomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CrisisCenterHomeComponent]
+      declarations: [ CrisisCenterHomeComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

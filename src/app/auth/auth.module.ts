@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
 import {LoginComponent} from './login/login.component';
-// @ts-ignore
 import {AuthRoutingModule} from './auth-routing.module';
 
 @NgModule({

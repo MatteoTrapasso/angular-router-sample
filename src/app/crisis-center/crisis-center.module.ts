@@ -7,7 +7,7 @@ import {CrisisListComponent} from './crisis-list/crisis-list.component';
 import {CrisisCenterComponent} from './crisis-center/crisis-center.component';
 import {CrisisDetailComponent} from './crisis-detail/crisis-detail.component';
 
-import {CrisisCenterRoutingModule} from './crises-center-routing.module';
+import {CrisisCenterRoutingModule} from './crisis-center-routing.module';
 
 @NgModule({
   imports: [
@@ -22,5 +22,4 @@ import {CrisisCenterRoutingModule} from './crises-center-routing.module';
     CrisisDetailComponent
   ]
 })
-export class CrisisCenterModule {
-}
+export class CrisisCenterModule {}

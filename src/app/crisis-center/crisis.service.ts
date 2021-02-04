@@ -13,13 +13,10 @@ export class CrisisService {
   static nextCrisisId = 100;
   private crises$: BehaviorSubject<Crisis[]> = new BehaviorSubject<Crisis[]>(CRISES);
 
-  constructor(private messageService: MessageService) {
-  }
+  constructor(private messageService: MessageService) { }
 
   // tslint:disable-next-line:typedef
-  getCrises() {
-    return this.crises$;
-  }
+  getCrises() { return this.crises$; }
 
   // tslint:disable-next-line:typedef
   getCrisis(id: number | string) {

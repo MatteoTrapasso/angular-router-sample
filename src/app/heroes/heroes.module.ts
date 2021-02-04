@@ -18,5 +18,4 @@ import {HeroesRoutingModule} from './heroes-routing.module';
     HeroDetailComponent
   ]
 })
-export class HeroesModule {
-}
+export class HeroesModule {}

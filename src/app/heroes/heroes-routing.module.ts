@@ -5,8 +5,8 @@ import {HeroListComponent} from './hero-list/hero-list.component';
 import {HeroDetailComponent} from './hero-detail/hero-detail.component';
 
 const heroesRoutes: Routes = [
-  {path: 'heroes', component: HeroListComponent, data: {animation: 'heroes'}},
-  {path: 'hero/:id', component: HeroDetailComponent, data: {animation: 'hero'}}
+  { path: 'heroes',  component: HeroListComponent, data: { animation: 'heroes' } },
+  { path: 'hero/:id', component: HeroDetailComponent, data: { animation: 'hero' } }
 ];
 
 @NgModule({
@@ -17,5 +17,4 @@ const heroesRoutes: Routes = [
     RouterModule
   ]
 })
-export class HeroesRoutingModule {
-}
+export class HeroesRoutingModule { }

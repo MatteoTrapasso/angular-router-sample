@@ -5,7 +5,6 @@
   padding: 0;
   width: 15em;
 }
-
 .crises li {
   position: relative;
   cursor: pointer;
@@ -30,7 +29,7 @@
 }
 
 .crises a:hover {
-  color: #607D8B;
+  color:#607D8B;
 }
 
 .crises .badge {
@@ -75,7 +74,6 @@ button.delete {
   background-color: #CFD8DC;
   color: white;
 }
-
 .crises li.selected:hover {
   background-color: #BBD8DC;
 }
