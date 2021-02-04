@@ -20,6 +20,7 @@ export class HeroService {
     return of(HEROES);
   }
 
+  // tslint:disable-next-line:typedef
   getHero(id: number | string) {
     return this.getHeroes().pipe(
       // (+) before `id` turns the string into a number

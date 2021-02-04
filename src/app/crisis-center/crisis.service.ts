@@ -20,6 +20,7 @@ export class CrisisService {
     return of(CRISES);
   }
 
+  // tslint:disable-next-line:typedef
   getCrisis(id: number | string) {
     return this.getCrises().pipe(
       // (+) before `id` turns the string into a number
