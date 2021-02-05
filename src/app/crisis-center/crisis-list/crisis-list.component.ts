@@ -1,11 +1,10 @@
-// TODO: Feature Componetized like CrisisCenter
-import {Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import {CrisisService} from '../crisis.service';
-import {Crisis} from '../crisis';
+import { CrisisService } from '../crisis.service';
+import { Crisis } from '../crisis';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-crisis-list',
@@ -13,7 +12,7 @@ import {Crisis} from '../crisis';
   styleUrls: ['./crisis-list.component.css']
 })
 export class CrisisListComponent implements OnInit {
-  // @ts-ignore
+// @ts-ignore
   crises$: Observable<Crisis[]>;
   // @ts-ignore
   selectedId: number;
@@ -21,18 +20,15 @@ export class CrisisListComponent implements OnInit {
   constructor(
     private service: CrisisService,
     private route: ActivatedRoute
-  ) {
-    // @ts-ignore
-    this.crisis$ = this.route.paramMap.pipe(
+  ) {}
+
+  ngOnInit(): void {
+    this.crises$ = this.route.paramMap.pipe(
       switchMap(params => {
-        // (+) before `params.get()` turns the string into a number
         // @ts-ignore
         this.selectedId = +params.get('id');
         return this.service.getCrises();
       })
     );
-  }
-
-  ngOnInit(): void {
   }
 }

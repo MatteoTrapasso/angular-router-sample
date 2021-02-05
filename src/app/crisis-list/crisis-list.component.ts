@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, Injectable, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 // @ts-ignore
-import { CrisisService } from '../crisis.service';
+import {CrisisService} from '../crisis.service';
 // @ts-ignore
-import { Crisis } from '../crisis';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import {Crisis} from '../crisis';
+import {Observable} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-crisis-list',
   templateUrl: './crisis-list.component.html',
   styleUrls: ['./crisis-list.component.css']
 })
+
 export class CrisisListComponent implements OnInit {
   // @ts-ignore
   crises$: Observable<Crisis[]>;
