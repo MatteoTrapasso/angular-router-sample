@@ -38,7 +38,7 @@ const crisisCenterRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(crisisCenterRoutes)
+    RouterModule.forChild([])
   ],
   exports: [
     RouterModule
