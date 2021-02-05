@@ -23,8 +23,9 @@ export class CrisisListComponent implements OnInit {
   constructor(
     private service: CrisisService,
     private route: ActivatedRoute
-  ) {
-    // @ts-ignore
+  ) {}
+
+  ngOnInit(): void {  // @ts-ignore
     this.crises$ = this.route.paramMap.pipe(
       switchMap(params => {
         // @ts-ignore
@@ -32,8 +33,5 @@ export class CrisisListComponent implements OnInit {
         return this.service.getCrises();
       })
     );
-  }
-
-  ngOnInit(): void {
   }
 }
