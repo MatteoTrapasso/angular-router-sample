@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  CanActivateChild,
+  CanActivateChild, Route,
   Router,
   RouterStateSnapshot,
   UrlTree
@@ -37,5 +37,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
     // Redirect to the login page
     return this.router.parseUrl('/login');
+  }
+  canLoad(route: Route): true | UrlTree {
+    const url = `/${route.path}`;
+
+    return this.checkLogin(url);
   }
 }

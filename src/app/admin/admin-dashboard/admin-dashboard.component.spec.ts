@@ -1,25 +1,39 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import {AdminDashboardComponent} from './admin-dashboard.component';
+import { SelectivePreloadingStrategyService } from '../../selective-preloading-strategy.service';
 
-describe('AdminDashboardComponent', () => {
-  let component: AdminDashboardComponent;
-  let fixture: ComponentFixture<AdminDashboardComponent>;
+@Component({
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.css']
+})
+export class AdminDashboardComponent implements OnInit {
+  // @ts-ignore
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AdminDashboardComponent ]
-    })
-    .compileComponents();
-  });
+  sessionId: Observable<string>;
+  // @ts-ignore
+  token: Observable<string>;
+  modules: string[];
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AdminDashboardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  constructor(
+    private route: ActivatedRoute,
+    preloadStrategy: SelectivePreloadingStrategyService
+  ) {
+    this.modules = preloadStrategy.preloadedModules;
+  }
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit(): void {
+    // Capture the session ID if available
+    this.sessionId = this.route
+      .queryParamMap
+      .pipe(map(params => params.get('session_id') || 'None'));
+
+    // Capture the fragment if available
+    this.token = this.route
+      .fragment
+      .pipe(map(fragment => fragment || 'None'));
+  }
+}

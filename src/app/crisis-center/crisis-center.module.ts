@@ -9,20 +9,20 @@ import {CrisisDetailComponent} from './crisis-detail/crisis-detail.component';
 import {CrisisCenterRoutingModule} from './crisis-center-routing.module';
 import {CrisisService} from './crisis.service';
 import {CrisisListComponent} from './crisis-list/crisis-list.component';
-import {CiccioComponent} from '../ciccio/ciccio.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    CrisisCenterRoutingModule
+    CrisisCenterRoutingModule,
+    RouterModule
   ],
   declarations: [
     CrisisCenterComponent,
     CrisisCenterHomeComponent,
     CrisisDetailComponent,
     CrisisListComponent,
-    CiccioComponent
   ],
   providers: [
     CrisisService
